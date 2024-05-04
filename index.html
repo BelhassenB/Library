@@ -5,42 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
 </head>
 <body>
     <div class="header">
         <h1>My Library</h1>
-        <button>Add New Book</button>
+        <button class="addBook">Add New Book</button>
     </div>
-    <dialog>
-
-    </dialog>
-    <form action="" method="dialog">
+    <dialog class="bookForm">
+        <form action="" method="dialog">
         
-        <label for="book-title">Title of the Book</label>
-        <input type="text" id="book-title" name="book" required>
-
-        <label for="author-name">Author</label>
-        <input type="text" id="author-name" name="author" required>
-
-        <label for="Pages">Number of pages</label>
-        <input type="tel" id="pages" name="number-pages" required>
-        
-        <legend>Did you finish reading the book?</legend>
-
-        <div>
-            <input type="radio" id="book-was-read" name="book-was-read" value="yes">
-            <label for="book-was-read">Yes</label>
-        </div>
-        <div>
-            <input type="radio" id="book-not-read" name="book-was-read" value="No">
-            <label for="book-not-read">No</label>
-        </div>
-
-        <button type="submit">Submit Book</button>
-    </form>
-
-
+            <label for="book-title">Title of the Book</label>
+            <input type="text" id="book-title" name="book" required>
     
+            <label for="author-name">Author</label>
+            <input type="text" id="author-name" name="author" required>
+    
+            <label for="Pages">Number of pages</label>
+            <input type="tel" id="pages" name="number-pages" required>
+            
+            <div>
+                <label for="book-is-read">This book is read?</label>
+                <input type="checkbox" id="book-is-read" name="book-read">
+            </div>
+            
+    
+            <button type="submit" class="submit-book">Submit Book</button>
+        </form>
+    </dialog>
+    <h2>All your books are here!</h2>
+    <div class="all-books">
+        
+
+    </div>
+    
+    <script src="script.js"></script>    
 </body>
 </html>
