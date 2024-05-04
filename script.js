@@ -14,14 +14,12 @@ const allInputs = document.querySelectorAll('input')
 const allLabels = document.querySelectorAll('label')
 
 
-function Book(title, author, nbrOfPages, wasRead) {
+function Book(title, author, nbrOfPages, read) {
    this.title = title,
    this.author = author,
    this.nbrOfPages = nbrOfPages,
-   this.wasRead = wasRead
-   
+   this.read = read  
 }
-
 
 bookBtn.addEventListener("click", () => {
    bookForm.showModal()
@@ -76,15 +74,15 @@ Book.prototype.displayBooks = function () {
    readBtn.className = "bookStatus"
    readBtn.style.fontSize = "22px"
    
-   allBooks.append(newBookDiv)  
+   allBooks.append(newBookDiv) 
 
    const objElements = Object.values(this)
    
+
    for (let i=0; i < objElements.length; i++) {
       const newEl = document.createElement('div')
       newEl.textContent = `${allLabels[i].textContent} :  ${objElements[i]}`
       newBookDiv.append(newEl)
-      
    }
    
    newBookDiv.append(createBtn)
@@ -94,25 +92,26 @@ Book.prototype.displayBooks = function () {
    deleteBtn.addEventListener("click", (e) => {
       const indexBook = e.target.dataset.bookref
       myLibrary.splice(indexBook, 1)
-      e.target.parentNode.remove()
+      e.target.parentNode.remove()  
    })
 
-   newBook.changeStatus(readBtn)
+   this.changeBookStatus(readBtn, bookIndex)
 }
 
-Book.prototype.changeStatus = function (statusBtn) {
-   statusBtn.addEventListener("click", () => {
-    if (this.wasRead === "Yes") {
-      this.wasRead = "No"
-      statusBtn.textContent = "Mark as read"
-      statusBtn.style.backgroundColor = "red"
-      element[3].value = "NOT YET"
+Book.prototype.changeBookStatus = function (btn, index) {
+   const slctBookStatus = allBooks.children[index].children[3]
+   btn.addEventListener("click", () => {
+      if (this.read === "Yes") {
+         this.read = "No"
+         slctBookStatus.textContent = "This book is read: No"
+         btn.textContent = "Mark as Read"
+         btn.style.backgroundColor = "red"
 
-    } else if (this.wasRead === "No") {
-      this.wasRead = "Yes"
-      statusBtn.textContent = "Mark as Unread"
-      statusBtn.style.backgroundColor = "green"
-    }
-   }
-)}
-
+      } else if (this.read === "No") {
+         this.read = "Yes"
+         slctBookStatus.textContent = "This book is read: Yes"
+         btn.textContent = "Mark as Unread"
+         btn.style.backgroundColor = "green"
+      }
+   })
+}
