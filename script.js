@@ -39,6 +39,7 @@ function addBookToLibrary () {
 
       myLibrary.push(newBook)
       form.reset()
+      bookForm.close()
       newBook.displayBooks()
   
 })
