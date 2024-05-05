@@ -27,7 +27,8 @@ bookBtn.addEventListener("click", () => {
 
 
 function addBookToLibrary () {
-   form.addEventListener("submit", (e) => {    
+   form.addEventListener("submit", (e) => {   
+      e.preventDefault(); 
       (bookReadVal.checked)? bookReadVal.value = "Yes": bookReadVal.value =  "No"
 
       newBook = new Book(titletVal.value, 
