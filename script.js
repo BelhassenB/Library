@@ -25,9 +25,10 @@ bookBtn.addEventListener("click", () => {
    bookForm.showModal()
 })
 
+
 function addBookToLibrary () {
-   submitBook.addEventListener("click", (e) => {
-      e.preventDefault();
+   form.addEventListener("submit", (e) => {
+         
 
       (bookReadVal.checked)? bookReadVal.value = "Yes": bookReadVal.value =  "No"
 
@@ -38,14 +39,9 @@ function addBookToLibrary () {
          )
 
       myLibrary.push(newBook)
-      form.reset()  
-      bookForm.close() 
-      newBook.displayBooks()
-      
-
+      form.reset()
+      newBook.displayBooks()  
 })
-
-
 }
 addBookToLibrary()
 
@@ -59,7 +55,6 @@ Book.prototype.displayBooks = function () {
    newBookDiv.style.boxShadow = "0 0 5px #000"
    newBookDiv.style.fontSize = "22px"
    newBookDiv.style.textAlign = "center"
-   // const getNewBookDiv = document.querySelector(`[data-bookref= "${bookIndex}"]`)
    const createBtn = document.createElement('button')
    createBtn.dataset.bookref = bookIndex
    createBtn.textContent = "Delete"
@@ -77,7 +72,6 @@ Book.prototype.displayBooks = function () {
    allBooks.append(newBookDiv) 
 
    const objElements = Object.values(this)
-   
 
    for (let i=0; i < objElements.length; i++) {
       const newEl = document.createElement('div')
