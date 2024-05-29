@@ -14,37 +14,71 @@ const allInputs = document.querySelectorAll('input')
 const allLabels = document.querySelectorAll('label')
 
 
-function Book(title, author, nbrOfPages, read) {
-   this.title = title,
-   this.author = author,
-   this.nbrOfPages = nbrOfPages,
-   this.read = read  
+class Book {
+   
+   constructor(title, author, nbrOfPages, read) {
+      this.title = title;
+      this.author = author;
+      this.nbrOfPages = nbrOfPages;
+      this.read = read
+   }
+   static displayForm() {
+      bookBtn.addEventListener("click", () => {
+         bookForm.showModal()
+      })
+   }
+
+   static addBookToLibrary () {
+      form.addEventListener("submit", (e) => {   
+         e.preventDefault(); 
+         (bookReadVal.checked)? bookReadVal.value = "Yes": bookReadVal.value =  "No"
+   
+         newBook = new Book(titletVal.value, 
+            authorVal.value, 
+            pagesVal.value,
+            bookReadVal.value        
+            )
+   
+         myLibrary.push(newBook)
+         form.reset()
+         bookForm.close()
+         newBook.displayBooks()
+     
+   })
+   }
 }
+Book.displayForm()
+Book.addBookToLibrary()
 
-bookBtn.addEventListener("click", () => {
-   bookForm.showModal()
-})
+// function Book(title, author, nbrOfPages, read) {
+//    this.title = title,
+//    this.author = author,
+//    this.nbrOfPages = nbrOfPages,
+//    this.read = read  
+// }
 
 
-function addBookToLibrary () {
-   form.addEventListener("submit", (e) => {   
-      e.preventDefault(); 
-      (bookReadVal.checked)? bookReadVal.value = "Yes": bookReadVal.value =  "No"
 
-      newBook = new Book(titletVal.value, 
-         authorVal.value, 
-         pagesVal.value,
-         bookReadVal.value        
-         )
 
-      myLibrary.push(newBook)
-      form.reset()
-      bookForm.close()
-      newBook.displayBooks()
+// function addBookToLibrary () {
+//    form.addEventListener("submit", (e) => {   
+//       e.preventDefault(); 
+//       (bookReadVal.checked)? bookReadVal.value = "Yes": bookReadVal.value =  "No"
+
+//       newBook = new Book(titletVal.value, 
+//          authorVal.value, 
+//          pagesVal.value,
+//          bookReadVal.value        
+//          )
+
+//       myLibrary.push(newBook)
+//       form.reset()
+//       bookForm.close()
+//       newBook.displayBooks()
   
-})
-}
-addBookToLibrary()
+// })
+// }
+// addBookToLibrary()
 
 Book.prototype.displayBooks = function () {
    const newBookDiv = document.createElement('div')
